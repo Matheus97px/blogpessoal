@@ -28,7 +28,7 @@ export class PostagemService {
             where: {
                 id
             },
-            relations:{
+            relations: {
                 tema: true
             }
         });
@@ -52,18 +52,19 @@ export class PostagemService {
 
 
     async create(postagem: Postagem): Promise<Postagem> {
-        
-        await this.temaService.findById(postagem.tema.id);
+        if (!postagem.tema) throw new HttpException('Tema não informado', HttpStatus.NOT_FOUND);
+        if (!postagem.tema.id) throw new HttpException('Tema não encontrado!', HttpStatus.NOT_FOUND);
 
-        if (!postagem.tema.id) throw new HttpException('Tema nao encontrado', HttpStatus.NOT_FOUND);
-       
+        await this.temaService.findById(postagem.tema.id);
         return await this.postagemRepository.save(postagem);
     }
-    
+
     async update(postagem: Postagem): Promise<Postagem> {
 
         await this.findById(postagem.id);
-      
+        if (!postagem.tema) throw new HttpException('Tema não informado', HttpStatus.NOT_FOUND);
+        if (!postagem.tema.id) throw new HttpException('Tema não encontrado!', HttpStatus.NOT_FOUND);
+
         await this.temaService.findById(postagem.tema.id);
 
         return await this.postagemRepository.save(postagem);
