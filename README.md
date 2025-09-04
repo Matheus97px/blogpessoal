@@ -1,77 +1,107 @@
-# Blog Pessoal
+# Blog Pessoal API
 
 ## Descrição
 
-Este é um projeto de um blog pessoal desenvolvido com NestJS, uma estrutura Node.js para a construção de aplicativos do lado do servidor eficientes e escaláveis. O projeto inclui funcionalidades como autenticação de usuário, postagens, temas e gerenciamento de usuários.
+Este projeto é uma API desenvolvida com [NestJS](https://nestjs.com/) e [TypeScript](https://www.typescriptlang.org/) para servir como backend de um blog pessoal. A API foi criada para ser consumida por um frontend em React, permitindo autenticação de usuários, criação de postagens, gerenciamento de temas e usuários.
+
+## Funcionalidades
+
+- Cadastro e autenticação de usuários (JWT)
+- CRUD de usuários
+- CRUD de postagens
+- CRUD de temas
+- Proteção de rotas com autenticação
+- Documentação automática com Swagger
 
 ## Tecnologias Utilizadas
 
-*   **Framework:** [NestJS](https://nestjs.com/)
-*   **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
-*   **Banco de Dados:** [TypeORM](https://typeorm.io/) com suporte para [MySQL](https://www.mysql.com/), [PostgreSQL](https://www.postgresql.org/) e [SQLite](https://www.sqlite.org/index.html)
-*   **Autenticação:** [Passport](http://www.passportjs.org/) com estratégias [JWT](https://jwt.io/) e local
-*   **Validação:** [class-validator](https://github.com/typestack/class-validator) e [class-transformer](https://github.com/typestack/class-transformer)
-*   **Documentação da API:** [Swagger](https://swagger.io/)
+- **NestJS** (Node.js)
+- **TypeScript**
+- **TypeORM** (MySQL, PostgreSQL, SQLite)
+- **Passport** (JWT e Local)
+- **Swagger** (documentação da API)
+- **Bcrypt** (criptografia de senhas)
+- **Class-validator** (validação de dados)
 
 ## Instalação
 
-1.  Clone o repositório:
+1. Clone o repositório:
     ```bash
     git clone https://github.com/seu-usuario/blogpessoal.git
     ```
-2.  Navegue até o diretório do projeto:
+2. Acesse o diretório do projeto:
     ```bash
     cd blogpessoal
     ```
-3.  Instale as dependências:
+3. Instale as dependências:
     ```bash
     npm install
     ```
 
+## Configuração
+
+Configure as variáveis de ambiente conforme seu banco de dados em um arquivo `.env` (opcional para produção).
+
 ## Executando a Aplicação
 
-Para iniciar a aplicação em modo de desenvolvimento com recarregamento automático, execute o seguinte comando:
-
+Para iniciar em modo de desenvolvimento:
 ```bash
 npm run start:dev
 ```
+A API estará disponível em `http://localhost:4000`.
 
-A aplicação estará disponível em `http://localhost:3000`.
+## Documentação
 
-## Endpoints da API
+Acesse a documentação interativa em:
+```
+http://localhost:4000/swagger
+```
 
-A seguir estão os principais endpoints da API. Para uma documentação completa e interativa, acesse `http://localhost:3000/api` após iniciar a aplicação.
+## Endpoints Principais
 
-### Autenticação
+- **Usuários**
+  - `POST /usuarios/cadastrar` — Cadastro de usuário
+  - `POST /usuarios/logar` — Login e obtenção do token JWT
+  - `GET /usuarios/all` — Listar todos os usuários (autenticado)
+  - `PUT /usuarios/atualizar` — Atualizar usuário (autenticado)
 
-*   `POST /auth/login` - Autentica um usuário e retorna um token JWT.
-*   `GET /auth/profile` - Retorna o perfil do usuário autenticado.
+- **Postagens**
+  - `GET /postagens` — Listar postagens (autenticado)
+  - `POST /postagens` — Criar postagem (autenticado)
+  - `PUT /postagens` — Atualizar postagem (autenticado)
+  - `DELETE /postagens/:id` — Deletar postagem (autenticado)
 
-### Usuários
+- **Temas**
+  - `GET /temas` — Listar temas (autenticado)
+  - `POST /temas` — Criar tema (autenticado)
+  - `PUT /temas` — Atualizar tema (autenticado)
+  - `DELETE /temas/:id` — Deletar tema (autenticado)
 
-*   `GET /usuarios` - Lista todos os usuários.
-*   `GET /usuarios/{id}` - Obtém um usuário por ID.
-*   `POST /usuarios` - Cria um novo usuário.
-*   `PUT /usuarios/{id}` - Atualiza um usuário.
-*   `DELETE /usuarios/{id}` - Deleta um usuário.
+## Consumo no React
 
-### Postagens
+Para consumir esta API no React, utilize bibliotecas como Axios ou Fetch, enviando o token JWT no cabeçalho `Authorization` das requisições protegidas.
 
-*   `GET /postagens` - Lista todas as postagens.
-*   `GET /postagens/{id}` - Obtém uma postagem por ID.
-*   `POST /postagens` - Cria uma nova postagem.
-*   `PUT /postagens/{id}` - Atualiza uma postagem.
-*   `DELETE /postagens/{id}` - Deleta uma postagem.
+## Licença e Créditos
 
-### Temas
+Este projeto foi desenvolvido durante o bootcamp **Full Stack Java** da **Generation Brasil**.
 
-*   `GET /temas` - Lista todos os temas.
-*   `GET /temas/{id}` - Obtém um tema por ID.
-*   `POST /temas` - Cria um novo tema.
-*   `PUT /temas/{id}` - Atualiza um tema.
-*   `DELETE /temas/{id}` - Deleta um tema.
+-  **Bootcamp**: Generation Brasil
+-  **Desenvolvido por**:  Matheus Pereira Xavier 
+-  **Para fins**: Educacionais e portfólio
 
-## Autor
+**Generation Brasil** - Transformando vidas através da tecnologia! 🚀
 
-*   **Matheus** - *Desenvolvedor* - [Matheus](https://github.com/Matheus97px)
+##  Autor
 
+**Seu Nome**
+- GitHub: [@Matheus97px](https://github.com/Matheus97px)
+- LinkedIn: [Matheuspx97](https://www.linkedin.com/in/matheuspx97/)
+- Email: matheus97p.q@gmail.com
+- Portfolio: [meu portifolio](https://matheus97px.github.io/portifolio/)
+
+
+---
+
+⭐ **Se este projeto te ajudou, considere dar uma estrela no repositório!**
+
+**Desenvolvido com ❤️ e Nest**
